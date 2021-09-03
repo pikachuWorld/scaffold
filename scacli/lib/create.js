@@ -50,6 +50,7 @@ module.exports = async function(name, options){
         }
     }
     // 
+    
     const generator = new Generator(name, targetAir)
     //
     generator.create()

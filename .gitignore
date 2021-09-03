@@ -1,13 +1,6 @@
-# Build and Release Folders
-# bin-debug/
-# bin-release/
-# [Oo]bj/
-# [Bb]in/
-
-# Other files and folders
+# 
 .settings/
 
-# Executables
 *.swf
 *.air
 *.ipa
@@ -21,5 +14,9 @@ node_modules/
 public/photos/
 .DS_Store
 .idea/**
-
+/yarn-error.log
+scacli/node_modules/
+scacli/.history/
+scacli/public/photos/
+scacli/.DS_Store
 
