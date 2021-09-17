@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-console.log('~~~~~ peach-cli working ~~~~~')
+// console.log('~~~~~ peach-cli working ~~~~~')
 const program = require('commander')
 const chalk = require('chalk');
 var figlet = require('figlet');
@@ -11,7 +11,7 @@ program
    .option('-f, --force', 'overwrite target directory if it exit')
    .action((name, options)=>{
        //
-       console.log('name:', name, 'option:', options)
+      //  console.log('name:', name, 'option:', options)
        require('../lib/create.js')(name, options)
    })
 
@@ -31,7 +31,7 @@ program
    .option('-d, --delete <path>', 'delete option from config')
    .action((value, options)=>{
        //
-       console.log(value, options)
+      //  console.log(value, options)
        
 })
 // 配置 UI命令
@@ -42,7 +42,7 @@ program
    .option('-p, --port <port>', 'Port used for the UI Server')
    .action((options)=>{
        //
-       console.log(options)
+      //  console.log(options)
        
 })
 

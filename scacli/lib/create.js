@@ -2,16 +2,19 @@ const path = require('path')
 const fs = require('fs-extra')
 const inquirer = require('inquirer')
 const Generator = require('./Generator')
-console.log('---create--Generator',Generator)
+// console.log('---create--Generator',Generator)
 module.exports = async function(name, options){
     //
-    console.log('>>>print create.js', name, options)
+    // console.log('>>>print create.js', name, options)
     // 执行创建命令
     // 当前命令行选择的目录
     const cwd = process.cwd();
     // 需要创建的目录地址
     const targetAir =path.join(cwd, name)
-    console.log(cwd, '目录----', targetAir, fs.existsSync(targetAir))
+    // console.log(cwd, '目录----', targetAir, fs.existsSync(targetAir))
+    // fs.mkdir(`./${name}`, (err)=>{
+    //     console.log('--err--', err)
+    // })
     // 目录是否已经存在
     if(fs.existsSync(targetAir)){
         //

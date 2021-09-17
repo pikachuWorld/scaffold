@@ -1,0 +1,16 @@
+{
+  "name": "sca1",
+  "version": "1.0.0",
+  "description": "this is a file",
+  "main": "cli.js",
+  "bin": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sjq",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "inquirer": "^8.1.5"
+  }
+}

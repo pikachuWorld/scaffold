@@ -11,7 +11,7 @@ const chalk = require('chalk');
 //开始添加动画
 
 async function wrapLoading(fn, message, ...args){
-    console.log('---wrapLoading--', fn, message,'**', ...args)
+    // console.log('---wrapLoading--', fn, '--message--',message,'-args-', ...args)
     // 使用 ora 初始化，传入提示信息 message
     const spinner = ora(message);
     // console.log('---spinner--', spinner)
@@ -20,7 +20,7 @@ async function wrapLoading(fn, message, ...args){
     try{
         // 执行传入方法 fn
         const result = await fn(...args);
-        console.log('--result---', result)
+        // console.log('###try--result---', result)
         //  状态修改为成功
         spinner.succeed();
         return result;
@@ -34,11 +34,12 @@ async function wrapLoading(fn, message, ...args){
 
 class Generator{
     constructor(name, targetDir){
-        console.log('----11Generator---', name, targetDir)
+        // console.log('----11Generator---', name, targetDir)
         // 目录名称
         this.name = name;
         // // 创建位置
         this.targetDir = targetDir;
+        // 对 download-git-repo 进行 promise 化改造
         this.downloadGitRepo = util.promisify(downloadGitRepo)
     }
     // 获取用户选择的模板
@@ -53,7 +54,7 @@ class Generator{
         // console.log('222repoList--', repoList)
         //
         const repos = repoList.map(item => item.name)
-        console.log('repos--', repos)
+        // console.log('repos--', repos)
         //
         const { repo } = await inquirer.prompt({
            name: 'repo',
@@ -93,28 +94,32 @@ class Generator{
     // 2）调用下载方法
     async download(repo, tag){
         // 1）拼接下载地址
-        const requestUrl=`zhurong/${repo}${tag?'#'+tag:''}`;
-        console.log('---this.downloadGitRep-----', this.downloadGitRep)
-        console.log('---requestUrl-----', requestUrl)
+        const requestUrl=`pikachuWorld/${repo}${tag?'#'+tag:''}`;
+        // console.log('---this.downloadGitRep-----', this.downloadGitRepo)
+        // console.log('download---requestUrl-----', requestUrl)
+        // console.log('---process.cwd-----', process.cwd(), '--this.targetDir--', this.targetDir)
+        
         // // 2）调用下载方法
-        await wrapLoading(
+        const getres = await wrapLoading(
             this.downloadGitRepo, // 
             'waiting download template', // 
             requestUrl, //
-
             path.resolve(process.cwd(), this.targetDir) // 
         )
+        console.log('下载结果---', getres)
+
+
     }
 
     // 核心创建逻辑
     async create(){
        const repo = await this.getRepo()
-       console.log('用户选择，repo=' + repo)
+    //    console.log('用户选择，repo=' + repo)
         // 2) 获取 tag 名称
         const tag = await this.getTag(repo)
             // 3）下载模板到模板目录
-        await this.download(repo, tag)
-
+       const getloadRes =  await this.download(repo, tag)
+        // console.log('create-----getloadRes', getloadRes)
         console.log('用户选择了，repo=' + repo + '，tag='+ tag)
         // 4）模板使用提示
         console.log(`\r\nSuccessfully created project ${chalk.cyan(this.name)}`)
