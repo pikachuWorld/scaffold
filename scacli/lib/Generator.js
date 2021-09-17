@@ -106,7 +106,7 @@ class Generator{
             requestUrl, //
             path.resolve(process.cwd(), this.targetDir) // 
         )
-        console.log('下载结果---', getres)
+        // console.log('下载结果---', getres)
 
 
     }
