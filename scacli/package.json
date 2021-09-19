@@ -1,6 +1,6 @@
 {
-    "name": "peach-cli",
-    "version": "1.0.0",
+    "name": "song-peach-cli",
+    "version": "1.0.3",
     "description": "脚手架",
     "main": "index.js",
     "bin": {
@@ -18,7 +18,7 @@
         "pec-cli",
         "pec",
         "脚手架"
-      ],
+    ],
     "license": "MIT",
     "dependencies": {
         "axios": "^0.21.1",
