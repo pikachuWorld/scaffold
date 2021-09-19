@@ -4,9 +4,7 @@ const inquirer = require('inquirer')
 const Generator = require('./Generator')
 // console.log('---create--Generator',Generator)
 module.exports = async function(name, options){
-    //
-    // console.log('>>>print create.js', name, options)
-    // 执行创建命令
+   
     // 当前命令行选择的目录
     const cwd = process.cwd();
     // 需要创建的目录地址
@@ -17,8 +15,7 @@ module.exports = async function(name, options){
     // })
     // 目录是否已经存在
     if(fs.existsSync(targetAir)){
-        //
-        // console.log('options.force---', options.force)
+       
         if(options.force){
             await fs.remove(targetAir)
 

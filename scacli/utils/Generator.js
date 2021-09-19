@@ -6,7 +6,6 @@ const util = require('util')
 const path = require('path')
 const downloadGitRepo = require('download-git-repo');
 const chalk = require('chalk');
-// const { request } = require('http');
 
 //开始添加动画
 
@@ -44,18 +43,14 @@ class Generator{
     }
     // 获取用户选择的模板
     // 1）从远程拉取模板数据
-   // 2）用户选择自己新下载的模板名称
+    // 2）用户选择自己新下载的模板名称
     // 3）return 用户选择的名称
     async getRepo(){
         // 
         const repoList = await wrapLoading(getRepoList, 'wait fetch template')
-        // console.log('111repoList--', repoList)
         if(!repoList) return;
-        // console.log('222repoList--', repoList)
-        //
         const repos = repoList.map(item => item.name)
-        // console.log('repos--', repos)
-        //
+       
         const { repo } = await inquirer.prompt({
            name: 'repo',
            type: 'list',
@@ -94,21 +89,16 @@ class Generator{
     // 2）调用下载方法
     async download(repo, tag){
         // 1）拼接下载地址
-        const requestUrl=`pikachuWorld/${repo}${tag?'#'+tag:''}`;
-        // console.log('---this.downloadGitRep-----', this.downloadGitRepo)
-        // console.log('download---requestUrl-----', requestUrl)
-        // console.log('---process.cwd-----', process.cwd(), '--this.targetDir--', this.targetDir)
-        
+        const requestUrl=`peach-cli-organization/${repo}${tag?'#'+tag:''}`;
+      
         // // 2）调用下载方法
-        const getres = await wrapLoading(
+        await wrapLoading(
             this.downloadGitRepo, // 
             'waiting download template', // 
             requestUrl, //
             path.resolve(process.cwd(), this.targetDir) // 
         )
-        // console.log('下载结果---', getres)
-
-
+      
     }
 
     // 核心创建逻辑
@@ -118,7 +108,7 @@ class Generator{
         // 2) 获取 tag 名称
         const tag = await this.getTag(repo)
             // 3）下载模板到模板目录
-       const getloadRes =  await this.download(repo, tag)
+        await this.download(repo, tag)
         // console.log('create-----getloadRes', getloadRes)
         console.log('用户选择了，repo=' + repo + '，tag='+ tag)
         // 4）模板使用提示

@@ -10,9 +10,8 @@ program
    .description('create a new project')
    .option('-f, --force', 'overwrite target directory if it exit')
    .action((name, options)=>{
-       //
       //  console.log('name:', name, 'option:', options)
-       require('../lib/create.js')(name, options)
+      require('../utils/create.js')(name, options)
    })
 
 program
@@ -32,8 +31,7 @@ program
    .action((value, options)=>{
        //
       //  console.log(value, options)
-       
-})
+    })
 // 配置 UI命令
 program
 //定义命令和参数
@@ -43,8 +41,7 @@ program
    .action((options)=>{
        //
       //  console.log(options)
-       
-})
+    })
 
 program
   .on('--help', () => {

@@ -1,4 +1,4 @@
-// lib/http.js
+// utils/http.js
 // 
 const axios = require('axios')
 axios.interceptors.response.use(res => {
