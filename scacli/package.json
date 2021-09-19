@@ -14,6 +14,11 @@
         "name": "songxiaotao",
         "email": "jinqingemail@163.com"
     },
+    "keywords": [
+        "pec-cli",
+        "pec",
+        "脚手架"
+      ],
     "license": "MIT",
     "dependencies": {
         "axios": "^0.21.1",
